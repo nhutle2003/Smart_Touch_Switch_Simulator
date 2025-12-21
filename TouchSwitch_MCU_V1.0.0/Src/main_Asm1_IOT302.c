@@ -1,8 +1,7 @@
 /*
- * main_Asm1_IOT302.c
  *
- *  Created on: Nov 13, 2023
- *      Author: Mr.hDung
+ *  Created on: Dec 20, 2025
+ *      Author: MinhNhut
  *
  *  Requirement: Write a program to simulate the Lumi SmartHome touch switch device
  */
