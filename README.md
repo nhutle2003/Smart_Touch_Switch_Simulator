@@ -30,3 +30,7 @@ Dự án này sẽ xử lý các thao tác khi nhấn nút để điều khiển
 2. [Giới thiệu về bộ lọc Kalman](https://www.kalmanfilter.net/default.aspx)
 3. [Tutorial về bộ lọc Kalman của đại học MIT](https://web.mit.edu/kirtley/kirtley/binlustuff/literature/control/Kalman%20filter.pdf)
 4. [Source code về bộ lọc Kalman](https://github.com/HoangNH95/IOT-Programming-with-Master-Embedded/blob/master/Courseware%202/Kalman_filter.7z)
+
+## Flowchart chương trình
+
+![Flowchart](touchMCU.png)
