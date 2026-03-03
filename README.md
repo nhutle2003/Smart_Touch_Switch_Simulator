@@ -1,64 +1,67 @@
-Smart Touch Switch Simulator (STM32F401RE)
-📌 Giới thiệu
+# 🚀 Smart Touch Switch Simulator (STM32F401RE)
 
-Dự án xây dựng hệ thống mô phỏng công tắc cảm ứng cho nhà thông minh trên nền tảng vi điều khiển STM32F401RE (Nucleo).
+## 📌 Giới thiệu
 
-Firmware được thiết kế theo kiến trúc hướng sự kiện (event-driven), kết hợp state machine và cấu trúc module hóa nhằm đảm bảo hệ thống hoạt động rõ ràng, dễ mở rộng và dễ bảo trì.
+Dự án xây dựng hệ thống mô phỏng công tắc cảm ứng cho nhà thông minh trên nền tảng vi điều khiển **STM32F401RE (Nucleo)**.
+
+Firmware được thiết kế theo kiến trúc **hướng sự kiện (Event-driven)**, kết hợp **State Machine** và cấu trúc **module hóa**, giúp hệ thống dễ mở rộng và bảo trì.
 
 Hệ thống xử lý tương tác từ nút nhấn để điều khiển LED RGB, còi buzzer, hiển thị LCD và cập nhật dữ liệu cảm biến môi trường theo chu kỳ.
 
-🔧 Chức năng chính
+---
 
-Hiển thị thông báo khởi động hệ thống trên LCD khi cấp nguồn.
+## 🔧 Chức năng chính
 
-Xử lý sự kiện nút nhấn:
+### 1️⃣ Hiển thị khởi động
+- Hiển thị thông báo hệ thống trên LCD khi cấp nguồn.
 
-Nhấn đơn: bật/tắt các màu LED RGB (Red, Green, Blue, White) kèm tín hiệu buzzer.
+### 2️⃣ Xử lý nút nhấn
+- Nhấn đơn: bật/tắt các màu LED RGB (Red, Green, Blue, White).
+- Phát tín hiệu buzzer khi có thao tác.
+- Nhấn 5 lần liên tiếp: hiển thị thông tin hệ thống.
+- Nhấn giữ: tăng/giảm độ sáng LED bằng điều khiển PWM.
 
-Nhấn 5 lần liên tiếp: hiển thị thông tin hệ thống.
+### 3️⃣ Đọc dữ liệu cảm biến
+- Nhiệt độ & độ ẩm qua giao tiếp **I2C**.
+- Cường độ ánh sáng qua **ADC (DMA mode)**.
+- Cập nhật dữ liệu định kỳ bằng **Timer scheduling**.
 
-Nhấn giữ: tăng/giảm độ sáng LED bằng điều khiển PWM.
+---
 
-Đọc và hiển thị dữ liệu cảm biến:
+## 🏗 Kiến trúc phần mềm
 
-Nhiệt độ, độ ẩm qua giao tiếp I2C.
+- Thiết kế theo mô hình **Event-driven**
+- Xây dựng **State Machine** (Startup / Idle / Reset)
+- Sử dụng **Timer Scheduler** cho tác vụ định kỳ
+- Cấu trúc mã nguồn dạng module:
+  /Core
+  /Drivers
+  /Application
+  
+---
 
-Cường độ ánh sáng qua ADC (DMA mode).
+## 🛠 Công nghệ sử dụng
 
-Cập nhật dữ liệu cảm biến định kỳ thông qua cơ chế timer scheduling.
+- MCU: **STM32F401RE**
+- Ngôn ngữ: **Embedded C**
+- GPIO – Xử lý nút nhấn
+- PWM – Điều khiển độ sáng LED RGB
+- SPI – Giao tiếp LCD
+- I2C – Cảm biến nhiệt độ & độ ẩm
+- ADC + DMA – Cảm biến ánh sáng
 
-🏗 Kiến trúc phần mềm
+---
 
-Thiết kế firmware theo mô hình hướng sự kiện (Event-driven).
+## 📊 Luồng hoạt động hệ thống
 
-Xây dựng state machine quản lý trạng thái hệ thống (Startup / Idle / Reset).
+1. Khởi tạo hệ thống
+2. Hiển thị thông báo khởi động
+3. Chuyển sang trạng thái chờ
+4. Xử lý sự kiện (Button / Timer / Sensor)
+5. Điều khiển LED, buzzer và cập nhật LCD
 
-Sử dụng timer scheduler để thực thi các tác vụ định kỳ.
+---
 
-Tổ chức mã nguồn theo cấu trúc module (Core / Drivers).
+## 🖼 Sơ đồ chương trình
 
-🛠 Công nghệ sử dụng
-
-Vi điều khiển: STM32F401RE
-
-Ngôn ngữ lập trình: Embedded C
-
-GPIO: xử lý nút nhấn
-
-PWM: điều khiển độ sáng LED RGB
-
-SPI: giao tiếp LCD
-
-I2C: giao tiếp cảm biến nhiệt độ & độ ẩm
-
-ADC + DMA: đọc cảm biến ánh sáng
-
-📊 Luồng hoạt động hệ thống
-
-Khởi tạo hệ thống và hiển thị thông báo khởi động.
-
-Chuyển sang trạng thái chờ và xử lý sự kiện từ nút nhấn hoặc timer.
-
-Điều khiển LED, buzzer và LCD tương ứng với sự kiện.
-
-Định kỳ đọc và cập nhật dữ liệu cảm biến lên màn hình.
+![System Flow](touchMCU.png)
