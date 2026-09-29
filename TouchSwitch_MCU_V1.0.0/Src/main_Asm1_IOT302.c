@@ -1,6 +1,5 @@
 /*
  *
- *  Created on: Dec 20, 2025
  *      Author: MinhNhut
  *
  *  Requirement: Write a program to simulate the Lumi SmartHome touch switch device
